@@ -1,0 +1,584 @@
+/* About.css - Scoped Isolation */
+
+/* 1. Root Wrapper */
+.about-page-scope {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1e293b;
+  overflow-x: hidden;
+}
+
+/* 2. Navbar Scoped (Reused style for consistency) */
+.about-page-scope .about-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.about-page-scope .about-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.about-page-scope .about-brand-logo {
+  height: 32px;
+}
+
+.about-page-scope .about-brand-name {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #0f5132;
+}
+
+.about-page-scope .about-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about-page-scope .about-nav-links a {
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.about-page-scope .about-nav-links a:hover {
+  color: #0f5132;
+}
+
+.about-page-scope .about-nav-login-btn {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #0f5132;
+  color: #0f5132;
+  background: transparent;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.about-page-scope .about-nav-login-btn:hover {
+  background: #effdf5;
+}
+
+/* 3. Hero Section */
+.about-page-scope .about-hero {
+  /* Green gradient matching other pages */
+  background: linear-gradient(to bottom right, #c8f5e2, #d6f8d8, #e8fadd);
+  padding: 6rem 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.about-page-scope .about-hero-content {
+  max-width: 800px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.about-page-scope .about-badge {
+  display: inline-block;
+  background-color: rgba(15, 81, 50, 0.1);
+  color: #0f5132;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(15, 81, 50, 0.2);
+}
+
+.about-page-scope .about-hero h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  color: #0f5132;
+  margin-bottom: 1.5rem;
+}
+
+.about-page-scope .about-hero p {
+  font-size: 1.25rem;
+  color: #2a5a48;
+  line-height: 1.6;
+}
+
+/* 4. Stats Section */
+.about-page-scope .about-stats-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f5132; /* Dark green band */
+  padding: 3rem 1rem;
+  color: white;
+  margin-top: -2rem; /* Pull slightly up if desired, or keep flat */
+}
+
+.about-page-scope .about-stat-item {
+  text-align: center;
+  padding: 0 3rem;
+}
+
+.about-page-scope .about-stat-item h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #effdf5;
+}
+
+.about-page-scope .about-stat-item p {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8dae96;
+}
+
+.about-page-scope .about-stat-divider {
+  width: 1px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 5. Mission Grid */
+.about-page-scope .about-mission-section {
+  padding: 5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  
+  
+}
+
+.about-page-scope .about-section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+ 
+}
+
+.about-page-scope .about-section-header h2 {
+  font-size: 2.5rem;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.about-page-scope .about-section-header p {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+.about-page-scope .about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.about-page-scope .about-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.about-page-scope .about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+  border-color: #c8f5e2;
+}
+
+.about-page-scope .about-icon-box {
+  width: 56px;
+  height: 56px;
+  background-color: #effdf5;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f5132;
+  margin-bottom: 1.5rem;
+}
+
+.about-page-scope .about-card h3 {
+  font-size: 1.25rem;
+  color: #0f5132;
+  margin-bottom: 0.75rem;
+}
+
+.about-page-scope .about-card p {
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* 6. Story Section */
+.about-page-scope .about-story-section {
+  background-color: #fff;
+  padding: 5rem 2rem;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.about-page-scope .about-story-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.about-page-scope .about-story-text {
+  flex: 1;
+}
+
+.about-page-scope .about-story-text h2 {
+  font-size: 2.25rem;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+.about-page-scope .about-story-text p {
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.about-page-scope .about-founders {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.about-page-scope .founder-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-page-scope .about-founders div {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-page-scope .about-founders strong {
+  color: #0f5132;
+}
+
+.about-page-scope .about-founders span {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+/* Decorative Visual for Story */
+.about-page-scope .about-story-visual {
+  flex: 1;
+  position: relative;
+  height: 400px;
+  background-color: #effdf5;
+  border-radius: 24px;
+  display: flex; /* Center internal card */
+  align-items: center;
+  justify-content: center;
+}
+
+.about-page-scope .visual-circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(15, 81, 50, 0.05);
+}
+
+.about-page-scope .circle-1 {
+  width: 200px;
+  height: 200px;
+  top: -20px;
+  right: -20px;
+}
+
+.about-page-scope .circle-2 {
+  width: 150px;
+  height: 150px;
+  bottom: 20px;
+  left: 20px;
+}
+
+.about-page-scope .visual-card-mockup {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 2;
+  max-width: 200px;
+  text-align: center;
+}
+
+.about-page-scope .visual-card-mockup span {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* 7. CTA Section */
+.about-page-scope .about-cta-section {
+  padding: 6rem 2rem;
+  background-color: #8be9bd71;
+  text-align: center;
+}
+
+.about-page-scope .about-cta-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-page-scope .about-cta-container h2 {
+  font-size: 2.5rem;
+  color: #0f5132;
+  margin-bottom: 1rem;
+}
+
+.about-page-scope .about-cta-container p {
+  color: #64748b;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.about-page-scope .about-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #0f5132;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(15, 81, 50, 0.2);
+}
+
+.about-page-scope .about-cta-btn:hover {
+  background-color: #004d00;
+  transform: translateY(-2px);
+}
+
+/* ... Existing code ... */
+
+/* --- NEW SCROLLING SECTION STYLES --- */
+.about-page-scope .about-dual-scroll-wrapper {
+  width: 100%;
+  height: 360px; /* Taller to fit two rows */
+  overflow: hidden;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Gap between rows */
+  /* Gradient mask for smooth edges */
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.about-page-scope .about-scroll-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+}
+
+/* Smaller cards for the dual view */
+.about-page-scope .about-scroll-card-small {
+  width: 250px;
+  height: 170px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  flex-shrink: 0;
+}
+
+.about-page-scope .about-scroll-card-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- ANIMATIONS --- */
+
+/* Class for Left-to-Right */
+.about-page-scope .move-right {
+  animation: scrollRight 25s linear infinite;
+}
+
+/* Class for Right-to-Left */
+.about-page-scope .move-left {
+  animation: scrollLeft 25s linear infinite;
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+/* 8. Mobile Responsiveness */
+/* =========================================
+   MOBILE RESPONSIVENESS (Add to bottom of About.css)
+   ========================================= */
+
+@media (max-width: 900px) {
+  /* Fix Story Section Layout for Tablets/Small Laptops */
+  .about-page-scope .about-story-content {
+    flex-direction: column;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .about-page-scope .about-founders {
+    justify-content: center; /* Center the founder info */
+  }
+
+  .about-page-scope .about-story-visual {
+    width: 100%;
+    height: 300px; /* Fixed height for the visual container */
+  }
+}
+
+@media (max-width: 768px) {
+  /* 1. GLOBAL MOBILE SPACING */
+  .about-page-scope .about-hero,
+  .about-page-scope .about-mission-section,
+  .about-page-scope .about-story-section,
+  .about-page-scope .about-cta-section {
+    padding: 3rem 1.5rem; /* Reduce padding significantly */
+  }
+
+  /* 2. NAVBAR ADJUSTMENTS */
+  .about-page-scope .about-navbar {
+    padding: 1rem;
+  }
+  
+  /* Hide text links, keep Login button */
+  .about-page-scope .about-nav-links a:not(:last-child) {
+    display: none;
+  }
+  
+  .about-page-scope .about-brand-name {
+    font-size: 1.1rem;
+  }
+
+  /* Add inside your @media (max-width: 768px) block */
+
+.about-page-scope .about-hero-content {
+  /* Ensure the container never exceeds screen width */
+  width: 100%; 
+  max-width: 100%;
+  padding: 0 0.5rem; /* Add slight side padding so text doesn't touch edges */
+  box-sizing: border-box;
+  overflow: hidden; /* Cuts off anything that tries to push width out */
+}
+
+.about-page-scope .about-hero p {
+  /* Fix the specific text overflow issue */
+  font-size: 1rem; /* Reduce from 1.25rem to fit mobile better */
+  line-height: 1.5;
+  width: 100%;
+  max-width: 100%;
+  
+  /* Force text to wrap if a word is too long */
+  word-wrap: break-word; 
+  overflow-wrap: break-word;
+  
+  /* Ensure margin settings don't push it out */
+  margin-left: auto;
+  margin-right: auto;
+}
+  /* 3. HERO TYPOGRAPHY */
+  .about-page-scope .about-hero h1 {
+    font-size: 2.25rem; /* Smaller, readable title */
+    margin-bottom: 1rem;
+  }
+
+  .about-page-scope .about-hero p {
+    font-size: 1.05rem;
+  }
+
+  /* 4. DUAL SCROLL ANIMATION FIX */
+  .about-page-scope .about-dual-scroll-wrapper {
+    /* Height = (Card Height * 2) + Gap */
+    /* 90px + 90px + 10px = 190px approx */
+    height: 190px; 
+    gap: 10px; 
+    margin-bottom: 2rem;
+    /* Remove mask on old phones to improve performance, keep for others */
+  }
+
+  /* Target the class used in your React code: 'about-scroll-card-small' */
+  .about-page-scope .about-scroll-card-small {
+    width: 140px; 
+    height: 90px;
+    border-radius: 8px;
+    border-width: 2px;
+  }
+
+  /* 5. STATS SECTION */
+  .about-page-scope .about-stats-container {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 1rem;
+  }
+
+  /* Hide the vertical divider lines in mobile view */
+  .about-page-scope .about-stat-divider {
+    display: none; 
+  }
+  
+  .about-page-scope .about-stat-item h2 {
+    font-size: 1.5rem; /* Keep big numbers */
+  }
+
+  /* 6. MISSION GRID */
+  .about-page-scope .about-grid {
+    grid-template-columns: 1fr; /* Force single column */
+    gap: 1.5rem;
+  }
+
+  .about-page-scope .about-card {
+    padding: 1.5rem; /* Slightly compact cards */
+  }
+}
+
+/* 7. SMALL PHONES (iPhone SE, etc) */
+@media (max-width: 400px) {
+  .about-page-scope .about-hero h1 {
+    font-size: 2rem;
+  }
+
+  /* Make scroll even smaller to save space */
+  .about-page-scope .about-dual-scroll-wrapper {
+    height: 160px;
+  }
+
+  .about-page-scope .about-scroll-card-small {
+    width: 120px;
+    height: 75px;
+  }
+}
