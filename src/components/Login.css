@@ -5,17 +5,30 @@
   min-height: 100vh;
   background-color: #f8fafc;
   font-family: "Inter", system-ui, sans-serif;
+  /* Add padding to top so content isn't hidden behind fixed navbar */
+  padding-top: 80px; 
 }
 
 /* =====================
-   Navbar
+   Fixed Navbar
 ===================== */
 .navbar {
   height: 70px;
-  padding: 0 32px; /* moved content slightly left */
+  padding: 0 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
+  /* Fixed Positioning Logic */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95); /* Slight transparency */
+  backdrop-filter: blur(8px); /* Blur effect behind navbar */
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-sizing: border-box;
 }
 
 .logo-container {
@@ -34,26 +47,48 @@
   color: #0f5132;
 }
 
+/* Desktop Nav Links */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 50px; /* reduced gap */
+  gap: 40px;
 }
 
 .nav-links a {
   font-size: 14px;
   color: #3a4a3a;
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #0f6b1f;
 }
 
 .signup-btn-nav {
   background: #0f6b1f;
   color: white;
   border: none;
-  padding: 9px 18px;
+  padding: 9px 20px;
   border-radius: 999px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.signup-btn-nav:hover {
+  background: #0a4d15;
+}
+
+/* Mobile Menu Button (Hidden on Desktop) */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1f2d1f;
 }
 
 /* =====================
@@ -61,21 +96,28 @@
 ===================== */
 .login-content {
   display: flex;
-  padding: 36px;
+  padding: 20px 36px;
   gap: 36px;
+  height: calc(100vh - 80px); /* Fill remaining height */
+  align-items: center;
 }
 
 /* =====================
    Image Card (Desktop)
 ===================== */
 .hero-card {
- flex: 1;
-  max-height: 520px;     /* ✅ prevents image from becoming too big */
-  max-width: 800px;
+  flex: 1;
+  height: 100%;
+  max-height: 600px;
   border-radius: 28px;
   overflow: hidden;
   position: relative;
-  margin-right: 150px;
+  /* Removed large margin-right to balance layout */
+}
+
+.hero-image-container {
+  width: 100%;
+  height: 100%;
 }
 
 .hero-image-container img {
@@ -84,22 +126,21 @@
   object-fit: cover;
 }
 
-/* gradient ensures text visibility */
 .hero-card::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.55),
-    rgba(0,0,0,0.15),
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.1),
     transparent
   );
 }
 
 .hero-overlay-text {
   position: absolute;
-  bottom: 36px;
+  bottom: 40px;
   left: 32px;
   right: 32px;
   color: white;
@@ -107,39 +148,36 @@
 }
 
 .hero-overlay-text h2 {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 600;
-  margin-bottom: 10px;
-  line-height: 1.25;
+  margin-bottom: 12px;
+  line-height: 1.2;
 }
 
 .hero-overlay-text p {
   font-size: 16px;
-  opacity: 0.95;
-  max-width: 380px;
+  opacity: 0.9;
+  max-width: 400px;
 }
 
 /* =====================
    Form Section
 ===================== */
 .form-section {
-  .form-section {
   flex: 1;
   display: flex;
-  align-items: flex-start;   /* FIX */
   justify-content: center;
-  padding-top: 40px;         /* pushes heading up */
+  align-items: center;
 }
 
-}
-
-.login-form {
+/* Wrapper to constrain width nicely */
+.form-wrapper {
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
 }
 
 .form-header h1 {
-  font-size: 36px;
+  font-size: 32px;
   color: #1f2d1f;
   margin-bottom: 8px;
 }
@@ -154,28 +192,32 @@
    Inputs
 ===================== */
 .input-group {
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .input-group label {
   font-size: 13px;
   font-weight: 500;
   color: #2f3d2f;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   display: block;
 }
 
 .input-group input {
   width: 100%;
-  padding: 14px 18px;
-  border-radius: 999px;
+  padding: 12px 16px;
+  border-radius: 12px;
   border: 1px solid #d7ddcf;
   font-size: 14px;
   outline: none;
+  background-color: white;
+  transition: border-color 0.2s;
+  box-sizing: border-box; /* Important for padding */
 }
 
 .input-group input:focus {
   border-color: #0f6b1f;
+  box-shadow: 0 0 0 3px rgba(15, 107, 31, 0.1);
 }
 
 /* Password */
@@ -185,21 +227,27 @@
 
 .toggle-password {
   position: absolute;
-  right: 16px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
+  color: #6e7e6e;
 }
 
 .forgot-link {
   display: block;
   text-align: right;
   font-size: 12px;
-  margin-top: 6px;
-  color: #7a8a7a;
+  margin-top: 8px;
+  color: #6e7e6e;
   text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot-link:hover {
+  color: #0f6b1f;
 }
 
 /* =====================
@@ -213,16 +261,34 @@
   border-radius: 999px;
   border: none;
   font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.login-submit-btn:hover {
+  background: #0a4d15;
 }
 
 .divider {
-  margin: 26px 0;
+  margin: 24px 0;
   text-align: center;
   font-size: 12px;
   color: #9aa79a;
+  position: relative;
 }
+
+.divider::before, .divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background-color: #e2e8f0;
+}
+.divider::before { left: 0; }
+.divider::after { right: 0; }
 
 .google-btn {
   width: 100%;
@@ -235,6 +301,14 @@
   justify-content: center;
   gap: 10px;
   cursor: pointer;
+  font-size: 14px;
+  color: #1f2d1f;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.google-btn:hover {
+  background-color: #f8fafc;
 }
 
 .google-btn img {
@@ -242,104 +316,88 @@
 }
 
 .footer-text {
-  margin-top: 20px;
+  margin-top: 24px;
   font-size: 13px;
   text-align: center;
+  color: #6e7e6e;
 }
 
 .footer-text a {
   color: #0f6b1f;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
 }
 
 /* =====================
-   Tablet
+   Tablet & Mobile Responsive
 ===================== */
 @media (max-width: 900px) {
-  .login-content {
-    flex-direction: column;
-    padding: 20px;
-    
-  }
-
   .hero-card {
-    height: 260px;
+    display: none; /* Hide image on tablet/mobile */
   }
+  
+  .login-content {
+    justify-content: center;
+    padding: 20px;
+  }
+}
 
-  @media (max-width: 900px) {
+@media (max-width: 768px) {
   .navbar {
-    flex-wrap: wrap;
-    height: auto;
-    padding: 16px 20px;
+    padding: 0 20px;
   }
 
+  /* Show Hamburger Icon */
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  /* Hide Nav Links initially on mobile */
   .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 12px;
-    gap: 12px;
+    background-color: white;
+    flex-direction: column;
+    padding: 20px 0;
+    border-bottom: 1px solid #e2e8f0;
+    gap: 0;
+    
+    /* Animation setup */
+    transform: translateY(-150%);
+    transition: transform 0.3s ease-in-out;
+    z-index: -1; /* Behind navbar but visible when dropped */
+  }
+
+  /* When menu is open */
+  .nav-links.mobile-active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   }
 
   .nav-links a {
-    font-size: 13px;
+    width: 100%;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #f1f5f9;
   }
 
+  .nav-links a:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* Adjust Sign Up button in mobile menu */
   .signup-btn-nav {
-    padding: 8px 14px;
-    font-size: 13px;
+    width: 90%;
+    margin: 10px auto;
+    display: block;
+    padding: 12px;
   }
-}
-}
-
-/* =====================
-   Mobile (Image removed)
-===================== */
-@media (max-width: 600px) {
-  .hero-card {
-    display: none; /* image removed */
-    
-  }
-
+  
   .form-header h1 {
     font-size: 28px;
-  }
-
-  .login-content {
-    padding: 16px;
-    background: linear-gradient(to bottom right, #c8f5e2, #d6f8d8, #e8fadd); 
-  }
-
-  .login-form {
-    max-width: 100%;
-  }
-
-  
-}
-@media (max-width: 600px) {
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 16px;
-  }
-
-  .nav-links a {
-    font-size: 14px;
-  }
-
-  .signup-btn-nav {
-    margin-top: 8px;
-  }
-}
-
-@media (max-width: 600px) {
-  .form-section {
-    padding-top: 20px;
-   
-  }
-
-  .form-header h1 {
-    font-size: 26px;
   }
 }

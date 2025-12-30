@@ -1,33 +1,41 @@
 import React, { useState } from 'react';
-import { Eye, Sparkles } from 'lucide-react';
+import { Eye, Menu, X } from 'lucide-react'; // Added Menu and X icons
 import { Link } from 'react-router-dom';
 import './Login.css';
 
-
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
     <div className="login-container">
-      {/* Navigation Bar */}
-      {/* Navigation Bar */}
-        <nav className="navbar">
-            <div className="logo-container">
-                {/* Replace 'logo.png' with your actual image path */}
-                <img src="/mainlogo.png" alt="Mindwell Logo" className="brand-logo" />
-                <span className="brand-name">Mindgate</span>
-            </div>
-            
-            <div className="nav-links">
-                <a href="#">Home</a>
-                <Link to="/about">About </Link>
-                <a href="#">For Psychologists</a>
-                <Link to="/help">Help</Link>
-                <Link to="/signup">
-                <button className="signup-btn-nav">Sign Up</button>
-                </Link>
-            </div>
-        </nav>
+      {/* --- Fixed Navigation Bar --- */}
+      <nav className="navbar">
+        <div className="logo-container">
+          <img src="/mainlogo.png" alt="Mindwell Logo" className="brand-logo" />
+          <span className="brand-name">Mindgate</span>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+        
+        {/* Navigation Links (Desktop & Mobile) */}
+        <div className={`nav-links ${isMobileMenuOpen ? 'mobile-active' : ''}`}>
+          <a href="#" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
+          <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+          <a href="#" onClick={() => setIsMobileMenuOpen(false)}>For Psychologists</a>
+          <Link to="/help" onClick={() => setIsMobileMenuOpen(false)}>Help</Link>
+          <Link to="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+            <button className="signup-btn-nav">Sign Up</button>
+          </Link>
+        </div>
+      </nav>
 
       <main className="login-content">
         {/* Left Side: Image/Card Section */}
@@ -46,50 +54,52 @@ const Login = () => {
 
         {/* Right Side: Form Section */}
         <div className="form-section">
-          <div className="form-header">
-            <h1>Welcome Back</h1>
-            <p>Please enter your details to access your dashboard.</p>
-          </div>
-
-          <form className="login-form">
-            <div className="input-group">
-              <label>Email or Username</label>
-              <input type="text" placeholder="example@email.com" />
+          <div className="form-wrapper">
+            <div className="form-header">
+              <h1>Welcome Back</h1>
+              <p>Please enter your details to access your dashboard.</p>
             </div>
 
-            <div className="input-group">
-              <label>Password</label>
-              <div className="password-wrapper">
-                <input 
-                  type={showPassword ? "text" : "password"} 
-                  placeholder="Enter your password" 
-                />
-                <button 
-                  type="button" 
-                  className="toggle-password"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  <Eye size={18} />
-                </button>
+            <form className="login-form">
+              <div className="input-group">
+                <label>Email or Username</label>
+                <input type="text" placeholder="example@email.com" />
               </div>
-              <a href="#" className="forgot-link">Forgot Password?</a>
-            </div>
 
-            <button type="submit" className="login-submit-btn">Log In</button>
+              <div className="input-group">
+                <label>Password</label>
+                <div className="password-wrapper">
+                  <input 
+                    type={showPassword ? "text" : "password"} 
+                    placeholder="Enter your password" 
+                  />
+                  <button 
+                    type="button" 
+                    className="toggle-password"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    <Eye size={18} />
+                  </button>
+                </div>
+                <a href="#" className="forgot-link">Forgot Password?</a>
+              </div>
 
-            <div className="divider">
-              <span>Or continue with</span>
-            </div>
+              <button type="submit" className="login-submit-btn">Log In</button>
 
-            <button type="button" className="google-btn">
-              <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" />
-              Google
-            </button>
+              <div className="divider">
+                <span>Or continue with</span>
+              </div>
 
-            <p className="footer-text">
-              Don't have an account? <Link to="/signup">Sign Up</Link>
-            </p>
-          </form>
+              <button type="button" className="google-btn">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" />
+                Google
+              </button>
+
+              <p className="footer-text">
+                Don't have an account? <Link to="/signup">Sign Up</Link>
+              </p>
+            </form>
+          </div>
         </div>
       </main>
     </div>

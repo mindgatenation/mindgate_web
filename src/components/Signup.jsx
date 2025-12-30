@@ -1,35 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { User, Mail, Lock, ShieldCheck, Star } from 'lucide-react';
+import { User, Mail, Lock, ShieldCheck, Star, Menu, X } from 'lucide-react';
 import './Signup.css';
-import logoImg from '/logo-col.png'; 
+import logoImg from '/mainlogo.png'; 
 
 const Signup = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className="signup-page-scope">
+    // STRICT ISOLATION WRAPPER
+    <div id="signup-page-root">
       
-      <nav className="navbar">
-        <div className="logo-container">
-          <img src={logoImg} alt="Mindgate Logo" className="brand-logo" />
-          <span className="brand-name">Mindgate</span>
-        </div>
-        
-        <div className="nav-links">
-          <a href="#">Home</a>
-          <Link to="/about">About </Link>
-          <a href="#">For Psychologists</a>
-          <Link to="/help">Help</Link>
-          <Link to="/">
-            <button className="signup-btn-nav">Log In</button>
-          </Link>
+      {/* --- Navbar (Scoped) --- */}
+      <nav className="signup-navbar">
+        <div className="signup-nav-container">
+          <div className="signup-logo">
+            <img src={logoImg} alt="Mindgate Logo" className="signup-logo-img" />
+            <span className="signup-brand-name">Mindgate</span>
+          </div>
+          
+          <div className="signup-menu-toggle" onClick={toggleMenu}>
+            {isMenuOpen ? <X size={24} color="#0f5132"/> : <Menu size={24} color="#0f5132"/>}
+          </div>
+
+          <div className={`signup-nav-links ${isMenuOpen ? 'active' : ''}`}>
+            <a href="#" onClick={() => setIsMenuOpen(false)}>Home</a>
+            <Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+            <a href="#" onClick={() => setIsMenuOpen(false)}>For Psychologists</a>
+            <Link to="/help" onClick={() => setIsMenuOpen(false)}>Help</Link>
+            <Link to="/" onClick={() => setIsMenuOpen(false)}>
+              <button className="signup-btn-nav">Log In</button>
+            </Link>
+          </div>
         </div>
       </nav>
 
+      {/* --- Main Content --- */}
       <div className="signup-container">
-        {/* Left Side: Branding & Testimonial */}
+        
+        {/* Left Side: Branding */}
         <div className="signup-hero">
-          {/* Mobile Logo Header (Visible only on mobile) */}
-
           <div className="hero-main-content">
             <h1>Find balance </h1>
             <h1><div className="hero-main-content-div">in a chaotic world.</div></h1>
