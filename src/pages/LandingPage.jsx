@@ -9,6 +9,7 @@ import Footer from "../components/landing/Footer";
 
 import aiImg from "../assets/ai.jpg";
 import humanImg from "../assets/human.jpg";
+import communityImg from "../assets/community.png";
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -104,7 +105,7 @@ export default function LandingPage() {
               <div className="lp-row-text">
                 <p className="lp-p">
                   Based on your needs, it gently checks in, offers community
-                  support or connects you with human professionals.
+                  support, or helps you connect with a human professional.
                 </p>
 
                 <div className="lp-row-cta">
@@ -115,7 +116,7 @@ export default function LandingPage() {
                     whileTap={{ scale: 0.97 }}
                     transition={{ type: "spring", stiffness: 320, damping: 18 }}
                   >
-                    Chat now →
+                    Talk to AI →
                   </motion.button>
                 </div>
               </div>
@@ -135,7 +136,7 @@ export default function LandingPage() {
                 transition={{ type: "spring", stiffness: 220, damping: 18 }}
               >
                 <div className="lp-illus-title">
-                  When you’re ready, a real-person is here for you.
+                  When you’re ready, a real person is here for you.
                 </div>
                 <div className="lp-illus-media">
                   <img src={humanImg} className="lp-illus-img" alt="Human support" />
@@ -156,7 +157,55 @@ export default function LandingPage() {
                     transition={{ type: "spring", stiffness: 320, damping: 18 }}
                     onClick={() => navigate("/human")}
                   >
-                    Connect now →
+                    Talk to a Human →
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* COMMUNITY SECTION */}
+            <motion.div
+              className="lp-row"
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-120px" }}
+              transition={{ duration: 0.75, ease: "easeOut", delay: 0.12 }}
+            >
+              <motion.div
+                className="lp-illus-card"
+                whileHover={{ y: -4, scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 220, damping: 18 }}
+              >
+                <div className="lp-illus-title">
+                  Join moderated group sessions that feel safe and supportive.
+                </div>
+                <div className="lp-illus-media">
+                  <img
+                    src={communityImg}
+                    className="lp-illus-img"
+                    alt="Community support"
+                  />
+                </div>
+              </motion.div>
+
+              <div className="lp-row-text">
+                <p className="lp-p">
+                  Join moderated group sessions where people come together to listen and share.
+                  <br />
+                  Connect with others facing similar challenges in a calm, respectful environment.
+                  <br />
+                  A supportive starting point that reminds you you’re not alone.
+                </p>
+
+                <div className="lp-row-cta">
+                  <motion.button
+                    className="lp-cta"
+                    onClick={() => navigate("/community")}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: "spring", stiffness: 320, damping: 18 }}
+                  >
+                    Explore →
                   </motion.button>
                 </div>
               </div>
