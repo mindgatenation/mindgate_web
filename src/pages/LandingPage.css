@@ -6,7 +6,10 @@
   position: relative;
   overflow-x: hidden;
   min-height: 100vh;
-  background: #eef7f3; /* mint base */
+
+  /* ✅ CHANGED: let the fixed background layer show through */
+  background: transparent;
+
   color: #0b2b20;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
     "Noto Sans", "Helvetica Neue", sans-serif;
@@ -36,25 +39,40 @@
 /* Blobs layer - Uses CSS variables updated via JS for mouse/scroll motion */
 .lp-bg::before {
   background:
-    radial-gradient(circle at calc(20% + var(--bgx, 0px)) calc(12% + var(--bgy, 0px)),
-      rgba(15, 106, 55, 0.18), transparent 55%),
-    radial-gradient(circle at calc(85% - var(--bgx, 0px)) calc(20% + var(--bgy, 0px)),
-      rgba(215, 242, 228, 0.92), transparent 55%),
-    radial-gradient(circle at calc(52% + var(--bgx, 0px)) calc(82% - var(--bgy, 0px)),
-      rgba(231, 246, 238, 0.90), transparent 58%),
-    radial-gradient(circle at 35% 60%,
-      rgba(15, 106, 55, 0.14), transparent 60%),
-    linear-gradient(180deg, #eef7f3 0%, #f4fbf7 45%, #eef7f3 100%);
+    /* ✅ NEW: abstract image layer (parallax via --bgx/--bgy) */
+    url("../assets/abstractbg.png")
+      calc(50% + var(--bgx, 0px))
+      calc(50% + var(--bgy, 0px)) / cover no-repeat,
 
-  filter: blur(18px);
-  opacity: 1;
-  transform: rotate(var(--bgrot, 0deg)) scale(1.05);
+    /* ✅ keep subtle mint glow layers (lighter so image shows through) */
+    radial-gradient(circle at calc(20% + var(--bgx, 0px)) calc(12% + var(--bgy, 0px)),
+      rgba(15, 106, 55, 0.10), transparent 58%),
+    radial-gradient(circle at calc(85% - var(--bgx, 0px)) calc(20% + var(--bgy, 0px)),
+      rgba(215, 242, 228, 0.60), transparent 58%),
+    radial-gradient(circle at calc(52% + var(--bgx, 0px)) calc(82% - var(--bgy, 0px)),
+      rgba(231, 246, 238, 0.55), transparent 60%),
+    radial-gradient(circle at 35% 60%,
+      rgba(15, 106, 55, 0.08), transparent 62%),
+
+    /* ✅ soft readable wash */
+    linear-gradient(180deg, rgba(238, 247, 243, 0.65) 0%, rgba(244, 251, 247, 0.55) 45%, rgba(238, 247, 243, 0.65) 100%);
+
+  filter: none;
+
+  /* ✅ NEW: smooth fade-out on scroll (driven by --bgfade from useEffect) */
+  opacity: var(--bgfade, 1);
+
+  /* ✅ CHANGED: no rotate, just scale */
+  transform: scale(1.05);
+
   transition: transform 120ms linear;
 }
 
 /* Subtle grain overlay for professional texture */
 .lp-bg::after {
-  opacity: 0.06;
+  /* ✅ OPTIONAL: fade grain as background fades */
+  opacity: calc(0.06 * var(--bgfade, 1));
+
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
   pointer-events: none;
@@ -265,9 +283,12 @@
    ========================================================================== */
 
 .lp-float {
-  position: absolute;
-  right: -34px;
-  top: 220px;
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -517,8 +538,7 @@
   }
 
   .lp-float {
-    right: 10px;
-    top: 190px;
+    right: 14px;
   }
 
   .lp-row {
@@ -559,3 +579,6 @@
     font-size: 16px;
   }
 }
+
+
+

@@ -126,12 +126,11 @@ const Help = () => {
         </div>
         <div className="help-nav-links">
           <Link to="/">Home</Link>
-          <Link to="/">
-             <button className="help-nav-login-btn">Log In</button>
+          <Link to="/login">
+            <button className="help-nav-login-btn">Log In</button>
           </Link>
         </div>
       </nav>
-
       {/* --- Hero Section --- */}
       <div className="help-hero">
         <h1>How can we help you?</h1>

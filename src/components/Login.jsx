@@ -19,9 +19,9 @@ const Login = () => {
             </div>
             
             <div className="nav-links">
-                <a href="#">Home</a>
+                <Link to="/">Home</Link>
                 <Link to="/about">About </Link>
-                <a href="#">For Psychologists</a>
+                <Link to="/psychologists">For Psychologists</Link>
                 <Link to="/help">Help</Link>
                 <Link to="/signup">
                 <button className="signup-btn-nav">Sign Up</button>

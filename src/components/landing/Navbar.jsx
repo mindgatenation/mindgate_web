@@ -9,9 +9,24 @@ export default function Navbar() {
     hover: { y: -1, opacity: 1 },
   };
 
-  const scrollToSupport = (e) => {
+  const goToAI = (e) => {
     e.preventDefault();
-    document.getElementById("support")?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById("support");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/personal");
+    }
+  };
+
+  const goToHuman = (e) => {
+    e.preventDefault();
+    const el = document.getElementById("support");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/human");
+    }
   };
 
   return (
@@ -35,7 +50,7 @@ export default function Navbar() {
             variants={hoverLink}
             initial="rest"
             whileHover="hover"
-            onClick={scrollToSupport}
+            onClick={goToAI}
           >
             Talk to AI
           </motion.a>
@@ -46,7 +61,7 @@ export default function Navbar() {
             variants={hoverLink}
             initial="rest"
             whileHover="hover"
-            onClick={scrollToSupport}
+            onClick={goToHuman}
           >
             Talk to Human
           </motion.a>
@@ -59,10 +74,10 @@ export default function Navbar() {
             whileHover="hover"
             onClick={(e) => {
               e.preventDefault();
-              navigate("/personal");
+              navigate("/help");
             }}
           >
-            Chat
+            Help
           </motion.a>
 
           <motion.a
@@ -73,36 +88,37 @@ export default function Navbar() {
             whileHover="hover"
             onClick={(e) => {
               e.preventDefault();
-              navigate("/human");
+              navigate("/about");
             }}
           >
-            Connect
+            About
           </motion.a>
         </nav>
 
         <div className="lp-nav-actions">
           <motion.button
             className="lp-linkbtn"
-            onClick={() => navigate("/personal")}
+            onClick={() => navigate("/login")}
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 350, damping: 18 }}
           >
-            Open Chat
+            Login
           </motion.button>
 
           <motion.button
             className="lp-pillbtn"
-            onClick={() => navigate("/human")}
+            onClick={() => navigate("/signup")}
             whileHover={{ scale: 1.06, y: -1 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 350, damping: 18 }}
           >
-            Talk to Human
+            Sign Up
           </motion.button>
         </div>
       </div>
     </header>
   );
 }
+
 
